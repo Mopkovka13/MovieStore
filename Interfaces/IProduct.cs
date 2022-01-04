@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MovieStore.Interfaces
-    class Product
+﻿namespace MovieStore.Interfaces
+{
+    public interface IProduct
     {
+        uint Id { get; set; }
+        string Name { get; set; }
+        decimal Price { get; set; }
+        uint Volume { get; set; }
     }
 }
