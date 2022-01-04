@@ -1,4 +1,5 @@
 ﻿using System;
+using MovieStore.Models;
 
 namespace MovieStore
 {
@@ -6,7 +7,7 @@ namespace MovieStore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }

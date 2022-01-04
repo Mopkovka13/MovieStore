@@ -2,7 +2,7 @@
 {
     public interface IProduct
     {
-        uint Id { get; set; }
+        uint Id { get;}
         string Name { get; set; }
         decimal Price { get; set; }
         uint Volume { get; set; }

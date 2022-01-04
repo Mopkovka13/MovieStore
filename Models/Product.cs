@@ -9,7 +9,12 @@ namespace MovieStore.Models
 {
     public class Product : IProduct
     {
-        public uint Id { get; set; }
+        private static uint _autoId;
+        public Product()
+        {
+            Id = _autoId++;
+        }
+        public uint Id { get; }
         public string Name { get; set; }
         public uint Volume { get; set; }
         public decimal Price { get; set; }
