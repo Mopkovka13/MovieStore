@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MovieStore.Interfaces;
+using System;
 
 namespace MovieStore.Models
 {
-    class Showcase
+    public class Showcase : IShowcase
     {
+        public uint Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Capacity { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime CreateDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime DeleteTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public void ShowProducts()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
