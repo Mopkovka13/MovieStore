@@ -6,7 +6,7 @@ namespace MovieStore.Interfaces
     {
         uint Id { get; }
         string Name { get; set; }
-        int Capacity { get; set; }
+        uint Capacity { get; set; }
         DateTime CreateDate { get; }
         //DateTime DeleteTime { get; } Так и не понял для чего, если удаляем, то посмотреть уже негде будет :D
         //Был вариант удалять не до конца

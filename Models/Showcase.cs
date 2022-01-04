@@ -9,15 +9,17 @@ namespace MovieStore.Models
         private List<Product> _products = new List<Product>();
         private static uint _autoId;
 
-        public Showcase()
+        public Showcase(string _name, uint _capacity)
         {
             Id = _autoId++;
+            Name = _name;
+            Capacity = _capacity;
             CreateDate = DateTime.Now;
         }
         
         public uint Id { get; }
         public string Name { get; set; }
-        public int Capacity { get; set; }
+        public uint Capacity { get; set; }
         public DateTime CreateDate { get; }
 
         public void ShowProducts()

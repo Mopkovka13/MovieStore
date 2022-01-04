@@ -7,7 +7,8 @@ namespace MovieStore
     {
         static void Main(string[] args)
         {
-            
+            Shop shop = new Shop();
+            shop.Open();
         }
     }
 }
