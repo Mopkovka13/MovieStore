@@ -22,6 +22,10 @@ namespace MovieStore.Models
         public uint Capacity { get; set; }
         public DateTime CreateDate { get; }
 
+        public void Show()
+        {
+            Console.WriteLine($"Id: {Id},  Name: {Name},  Capacity: {Capacity}, DateCreate: {CreateDate}");
+        }
         public void ShowProducts()
         {
             

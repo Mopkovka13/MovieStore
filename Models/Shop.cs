@@ -1,12 +1,11 @@
-﻿using System;
+﻿using MovieStore.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MovieStore.Models
 {
-    class Shop
+    internal class Shop
     {
         private List<Showcase> _showcases = new List<Showcase>();
         private bool _isOpen = true;
@@ -17,6 +16,7 @@ namespace MovieStore.Models
                 Menu();
             } while (_isOpen);
         }
+        
         private void Menu()
         {
             
@@ -29,38 +29,10 @@ namespace MovieStore.Models
             switch (operation.Key)
             {
                 case ConsoleKey.D1:
-                    try
-                    {
-                        Console.Clear();
-                        Console.Write("Print name: ");
-                        string nameShowcase = Console.ReadLine();
-                        Console.Write("Print capacity: ");
-                        uint capacityShowcase = Convert.ToUInt32(Console.ReadLine());
-                        if (capacityShowcase < 1)
-                            throw new Exception("Capacity < 1");
-                        Showcase showcase = new Showcase(nameShowcase, capacityShowcase);
-                        _showcases.Add(showcase);
-                        Console.Clear();
-                        Console.WriteLine("Showcase added\n");
-                    }
-                    catch
-                    {
-                        Console.WriteLine("You have entered incorrect data");
-                    }          
+                    addShowcase();
                     break;
                 case ConsoleKey.D2:
-                    if(_showcases.Count==0)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("No data\n");
-                    }
-                    else
-                    {
-                        for (int i = 0; i < _showcases.Count; i++)
-                        {
-                            Console.WriteLine($"Id: {_showcases[i].Id}  Name: {_showcases[i].Name}  Capacity: {_showcases[i].Capacity}");
-                        }
-                    }
+                    showShowcases();
                     break;
                 case ConsoleKey.D3:
                     Console.WriteLine("Вы пошли назад");
@@ -73,15 +45,92 @@ namespace MovieStore.Models
                      */
                     break;
                 case ConsoleKey.D4:
-                    Console.WriteLine("Вы двинулись направо");
+                    deleteShowcase();
                     break;
                 case ConsoleKey.D5:
                     Console.WriteLine("Programm is closed");
                     _isOpen = false;
                     break;
                 default:
-                    Console.WriteLine("Not found");
+                    Console.Clear();
+                    Console.WriteLine("Not found\n");
                     break;
+            }
+        }
+        void addShowcase()
+        {
+            try
+            {
+                Console.Clear();
+                Console.Write("Print name: ");
+                string nameShowcase = Console.ReadLine();
+                Console.Write("Print capacity: ");
+                uint capacityShowcase = Convert.ToUInt32(Console.ReadLine());
+                if (capacityShowcase < 1)
+                    throw new Exception("Capacity < 1");
+                Showcase showcase = new Showcase(nameShowcase, capacityShowcase);
+                _showcases.Add(showcase);
+                Console.Clear();
+                Console.WriteLine("Showcase added\n");
+            }
+            catch
+            {
+                Console.WriteLine("You have entered incorrect data");
+            }
+        }
+        void showShowcases()
+        {
+            if (_showcases.Count == 0)
+            {
+                Console.Clear();
+                Console.WriteLine("No data\n");
+            }
+            else
+            {
+                Console.Clear();
+                for (int i = 0; i < _showcases.Count; i++)
+                {
+                    _showcases[i].Show();
+                }
+                Console.WriteLine("Press any key...");
+                Console.ReadKey();
+            }
+            Console.Clear();
+        }
+        void deleteShowcase()
+        {
+            if (_showcases.Count == 0)
+            {
+                Console.Clear();
+                Console.WriteLine("No data\n");
+            }
+            else
+            {
+                Console.Clear();
+                for (int i = 0; i < _showcases.Count; i++)
+                {
+                    _showcases[i].Show();
+                }
+                Console.WriteLine("Enter the id");
+                bool success = uint.TryParse(Console.ReadLine(), out uint deleteId);
+                if (success && deleteId < _showcases.Count)
+                {
+                    for (int i = 0; i < _showcases.Count; i++)
+                    {
+                        if (_showcases[i].Id == deleteId)
+                        {
+                            _showcases.RemoveAt(i);
+                            Console.Clear();
+                            Console.WriteLine("showcase deleted\n");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Does not exist\n");
+                }
+
             }
         }
     }
