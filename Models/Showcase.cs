@@ -28,7 +28,20 @@ namespace MovieStore.Models
         }
         public void ShowProducts()
         {
-            
+            Console.WriteLine("{");
+            for(int i = 0; i < _products.Count;i++)
+            {
+                _products[i].Show();
+            }
+            Console.WriteLine("}");
+        }
+        public void AddProducts()
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                string tempName = "Name" + i;
+                _products.Add(new Product(tempName, 12*(uint)i));
+            }
         }
 
     }
